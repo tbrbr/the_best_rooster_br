@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1664657428 source:d:\tbrb\the_best_rooster_brazil2\main.cpp
+1664657959 source:d:\tbrb\the_best_rooster_brazil2\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Galo.h"
@@ -488,6 +488,9 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1664657446 d:\tbrb\the_best_rooster_brazil2\galo.h
+1664658797 d:\tbrb\the_best_rooster_brazil2\galo.h
 	<SFML/Graphics.hpp>
+
+1664657455 source:d:\tbrb\the_best_rooster_brazil2\galo.cpp
+	"Galo.h"
 

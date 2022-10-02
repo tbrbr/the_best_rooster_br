@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "Galo.h"
 
@@ -9,15 +10,19 @@
 using namespace sf;
 using namespace Rooster;
 
-int main(){
+int main() {
 
     RenderWindow* window = new RenderWindow(VideoMode(1280, 720), "TBRB");
     window->setFramerateLimit(FRAMERATE_LIMIT);
 
     Rooster::HitBox hb;
     Texture t;
+    t.loadFromFile("sprites/galoSniper.png");
 
     Rooster::Galo galo(hb, 20, 20, 20, Rooster::state::STOPPED, t);
+
+    int mouseX = 0;
+    int mouseY = 0;
 
     while (window->isOpen()) {
         Event e;
@@ -42,11 +47,19 @@ int main(){
 
             }
 
+            if (e.type == Event::MouseMoved) {
+
+                mouseX = e.mouseMove.x;
+                mouseY = e.mouseMove.y;
+            }
+
         }
 
-        galo.update();
+        galo.update(mouseX, mouseY);
+
 
         window->clear();
+        galo.show(*window);
         window->draw(galo.getSprite());
         window->display();
 
