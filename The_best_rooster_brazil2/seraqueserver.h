@@ -2,45 +2,40 @@
 #define SERAQUESERVER_H_INCLUDED
 
 #include <SFML/Network.hpp>
+#include <iostream>
+using namespace sf;
 
-void bindingUdp() {
+typedef unsigned short us16;
 
-    UdpSocket socket;
-
-    IpAddress ip = IpAddress::getLocalAddress();
-
-    if (socket.bind(Socket::AnyPort) != Socket::Done) {
-        std::cout << "moiou" << std::endl;
+void ConnectUDPSocket(UdpSocket & socket, us16 port){
+    if (socket.bind(port) != sf::Socket::Done)
+    {
+        std::cout << "Failz\n";
     }
-    unsigned short port = socket.getLocalPort();
 }
 
-void send(char data[],int sizeData){
-
-    UdpSocket socket;
-    unsigned short port = socket.getLocalPort();
-    char data1[100] = "mota nao tem a senha";
-
-    IpAddress recipient = sf::IpAddress::Broadcast;
-    if (socket.send(data, 100, recipient, port) != Socket::Done) {
-        // error...
-    }
-
-}
-
-void receive(char data[]){
-    UdpSocket socket;
+void receiveData(UdpSocket & socket, char data[]){
     sf::IpAddress sender;
-    unsigned short port;
-    //    if (socket.receive(data, 100, received, sender, port) != sf::Socket::Done)
-    //{
-        // error...
-    //}
-    //std::cout << "Received " << received << " bytes from " << sender << " on port " << port << std::endl;
+    size_t received;
+    us16 port;
+
+    if (socket.receive(data, 100, received, sender, port) != sf::Socket::Done)
+    {
+        std::cout << "Falha na comunicação com o servidor" << std::endl;
+        return;
+    }
+
+    std::cout << "Received " << received << " bytes from " << sender << " on port " << port << std::endl;
 }
 
 
+void SendData(UdpSocket & socket, std::string & message, IpAddress & ip, us16 port){
 
+    if (socket.send(message.c_str(), message.size() + 1, ip, port) != sf::Socket::Done)
+    {
+        std::cout << "Falha na comunicação com o servidor" << std::endl;
+    }
+}
 
 
 #endif // SERAQUESERVER_H_INCLUDED
