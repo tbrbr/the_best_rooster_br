@@ -1,19 +1,25 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
-
-#include "Galo.h"
-
-#define FRAMERATE_LIMIT 60
-#define println(x) std::cout << x << std::endl
+#include <cmath>
 
 using namespace sf;
+
+#define FRAMERATE_LIMIT 60
+#define G 9.81
+#define PI 3.1415926563
+
+#include "seraqueserver.h"
+#include "Elementos.h"
+#include "Galo.h"
+
 using namespace Rooster;
 
 
 
 
-int main(){
+
+int main() {
 
     RenderWindow* window = new RenderWindow(VideoMode(1280, 720), "TBRB");
     window->setFramerateLimit(FRAMERATE_LIMIT);
@@ -54,7 +60,7 @@ int main(){
 
             }
 
-            if(e.type == Event::KeyReleased){
+            if(e.type == Event::KeyReleased) {
                 if (e.key.code == Keyboard::A) {
                     galo.setState(Rooster::RUNNING);
                     galo.facingRight = false;
@@ -63,18 +69,18 @@ int main(){
                 if (e.key.code == Keyboard::D) {
                 }
             }
-            if(e.type == Event::MouseMoved){
+            if(e.type == Event::MouseMoved) {
                 mouseX = e.mouseMove.x;
                 mouseY = e.mouseMove.y;
             }
         }
 
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             galo.setState(Rooster::state::RUNNING);
             galo.facingRight = true;
             galo.animRun();
-        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             galo.setState(Rooster::state::RUNNING);
             galo.facingRight = false;
             galo.animRun();
@@ -83,11 +89,11 @@ int main(){
             galo.setHspeed(0);
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             galo2.setState(Rooster::state::RUNNING);
             galo2.facingRight = true;
             galo2.animRun();
-        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             galo2.setState(Rooster::state::RUNNING);
             galo2.facingRight = false;
             galo2.animRun();
@@ -96,7 +102,7 @@ int main(){
             galo2.setHspeed(0);
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
             galo.attacking = true;
         } else {
             galo.attacking = false;

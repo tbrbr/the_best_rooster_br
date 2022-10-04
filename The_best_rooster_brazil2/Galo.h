@@ -1,124 +1,13 @@
-
 #ifndef GALO_H_included
 #define GALO_H_included
 
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <cmath>
+namespace Rooster {
 
-using namespace sf;
-
-#define PI 3.1415926563
-#define G 9.81
-#define Euler 2.718281
-
-
-
-namespace Rooster
-{
-
-/* a element is a small part of a rooster or any caracther available
+/* a element is a small part of a rooster or any character available
 that way the animations will be smoother and easy to make for any rooster*/
 
-class Element
-{
 
-public:
-
-
-    sf::Sprite sprite;
-
-    Vector2f size;
-    Vector2f texPos;
-    Vector2f position;
-    Vector2f center;
-    Vector2f attach;
-
-    Vector2f offset;
-
-    int attachId = -1;
-
-    Vector2f scl;
-
-    float angle;
-
-    float otherAngle = 0;
-
-    Vector2f otherPos;
-
-    Element(sf::Texture& text, int xTex, int yTex, int wid, int hei, int xPin, int yPin, int xAttach, int yAttach)
-    {
-
-        sprite.setTexture(text);
-
-
-        // Retangulo do sprite na textura
-        texPos.x = xTex;
-        texPos.y = yTex;
-        size.x = wid;
-        size.y = hei;
-
-        sprite.setTextureRect(sf::IntRect(xTex, yTex, wid, hei));
-
-        // Centro de rota��o do sprite
-        center.x = xPin - xTex;
-        center.y = yPin - yTex;
-
-        sprite.setOrigin(center.x, center.y);
-
-
-        // Relative to Center of part this is attached to
-        attach.x = xAttach;
-        attach.y = yAttach;
-
-        // Angulo e escala
-        angle = 0;
-        scl.x = 0.25;
-        scl.y = 0.25;
-
-        offset.x = 0;
-        offset.y = 0;
-
-
-
-
-    }
-
-
-
-    void show(sf::RenderWindow& window)
-    {
-        sprite.setPosition(position);
-        sprite.setRotation(angle+otherAngle);
-        sprite.setScale(scl.x,scl.y);
-        sprite.setOrigin(center.x, center.y);
-        window.draw(sprite);
-
-    }
-
-
-
-    /// Updates element position based on the Part it's attached to
-    void update(float otherX, float otherY, float otherAng)
-    {
-
-        float fixAngle = 3.141592*otherAng/180;
-
-        /// Calculating actualized position...
-
-
-        position.x = offset.x + otherX + scl.x*attach.x*cos(fixAngle) - scl.y*attach.y*sin(fixAngle) ;
-        position.y = offset.y + otherY + scl.x*attach.x*sin(fixAngle) + scl.y*attach.y*cos(fixAngle);
-
-        otherAngle = otherAng;
-
-    }
-};
-
-
-
-enum state
-{
+enum state {
     STOPPED = 0,
     RUNNING,
     LOW_KICK,
@@ -131,8 +20,7 @@ enum state
     RIGHT
 
 };
-enum roosters
-{
+enum roosters {
     BOTAS,
     SNIPER,
     KALSA,
@@ -140,27 +28,13 @@ enum roosters
     BRUXO
 };
 
-enum bodyParts{
-     CORPO,
-     CABECA,
-     RABO,
-     ASA_FRENTE,
-     ASA_ATRAS,
-     PERNA_FRENTE,
-     PE_FRENTE,
-     PERNA_ATRAS,
-     PE_ATRAS
 
-};
-
-typedef struct
-{
+typedef struct {
     Vector2i xCenter;
     int radius;
 } HitBox;
 
-class Galo
-{
+class Galo {
     HitBox hitbox;
     int hp;
     int id;
@@ -194,12 +68,11 @@ public:
 
     void addElement(sf::Texture& tex, float xTex, float yTex, float wid,
                     float hei, float xCenter, float yCenter, float xAttach,
-                    float yAttach, int idAttach){
+                    float yAttach, int idAttach) {
 
         float xAt = 0;
         float yAt = 0;
-        if(idAttach != -1)
-        {
+        if(idAttach != -1) {
             xAt = xAttach - (elementos.at(idAttach)->texPos.x + elementos.at(idAttach)->center.x);
             yAt = yAttach - (elementos.at(idAttach)->texPos.y + elementos.at(idAttach)->center.y);
         }
@@ -209,8 +82,7 @@ public:
         elementos.push_back(part);
     }
 
-    Galo(HitBox _hitbox, int atk, int def, int speed, int _state, Texture& _texture)
-    {
+    Galo(HitBox _hitbox, int atk, int def, int speed, int _state, Texture& _texture) {
         hitbox = _hitbox;
         this->atk = atk;
         this->def = def;
@@ -257,42 +129,33 @@ public:
 
     }
 
-    RectangleShape getSprite()
-    {
+    RectangleShape getSprite() {
         return r;
     }
-    void setState(state estado)
-    {
+    void setState(state estado) {
         this->estado = estado;
     }
-    void setState(int estado)
-    {
+    void setState(int estado) {
         this->estado = estado;
     }
-    void animJump()
-    {
-        if (!air)
-        {
+    void animJump() {
+        if (!air) {
             vspeed += (peso * (-8)) / 2;
             air = true;
         }
     }
-    void animRun()
-    {
+    void animRun() {
         float acc = 0.5;
 
-        if (facingRight)
-        {
+        if (facingRight) {
             hspeed = (hspeed + acc) >  10 ?  10 : (hspeed + acc);
-            for(int i = 0; i < elementos.size(); i ++){
+            for(int i = 0; i < elementos.size(); i ++) {
                 elementos.at(i)->scl.x = -0.25;
 
             }
-        }
-        else
-        {
+        } else {
             hspeed = (hspeed - acc) < -10 ? -10 : (hspeed - acc);
-            for(int i = 0; i < elementos.size(); i ++){
+            for(int i = 0; i < elementos.size(); i ++) {
                 elementos.at(i)->scl.x = 0.25;
 
             }
@@ -301,30 +164,24 @@ public:
 
     }
 
-    void setHspeed(float spd)
-    {
+    void setHspeed(float spd) {
         hspeed = spd;
     }
 
-    void show(sf::RenderWindow& window)
-    {
+    void show(sf::RenderWindow& window) {
 
-        for(int i = 0; i < elementDrawOrder.size(); i++)
-        {
+        for(int i = 0; i < elementDrawOrder.size(); i++) {
             elementos.at(elementDrawOrder.at(i))->show(window);
         }
     }
 
-    void inline update(int mx, int my)
-    {
+    void inline update(int mx, int my) {
 
-        if(air)
-        {
+        if(air) {
             vspeed += peso * G/100;
         }
 
-        if (r.getPosition().y > 600)
-        {
+        if (r.getPosition().y > 600) {
             vspeed = 0;
             r.setPosition(r.getPosition().x, 600);
             air = false;
@@ -344,19 +201,16 @@ public:
 
         /******************************************************************/
 
-        if(attacking)
-        {
+        if(attacking) {
             ArmSpinAngFase += 10;
             ArmSpinAngFase -= ((int)ArmSpinAngFase/360)*360;
-        }
-        else
-        {
+        } else {
             ArmSpinAngFase *= 0.9;
             Arm2SpinAngFase *= 0.9;
         }
 
         //jump animation
-        if(air){
+        if(air) {
             ArmSpinAngFase = (vspeed/8) * 45;
             Arm2SpinAngFase =(vspeed/8) * 45;
 
@@ -375,13 +229,10 @@ public:
         elementos.at(ASA_ATRAS)->offset.y = sin(frames/200.f)*5;
 
         //running animation
-        if(estado == RUNNING)
-        {
+        if(estado == RUNNING) {
             legWalkAngFase += hspeed;
             legWalkAngFase -= ((int)legWalkAngFase/360)*360;
-        }
-        else
-        {
+        } else {
             legWalkAngFase *= 0.8;
         }
 
@@ -390,8 +241,7 @@ public:
         elementos.at(PERNA_ATRAS)->angle = -sin(2*PI*legWalkAngFase/360)*60;
 
 
-        for(int i = 1; i < elementos.size(); i++)
-        {
+        for(int i = 1; i < elementos.size(); i++) {
 
             Element* elem = elementos.at(elementos.at(i)->attachId);
             elementos.at(i)->update(elem->position.x, elem->position.y, elem->angle + elem->otherAngle);
@@ -400,8 +250,6 @@ public:
 
     }
 };
-
-
 }
 
 
