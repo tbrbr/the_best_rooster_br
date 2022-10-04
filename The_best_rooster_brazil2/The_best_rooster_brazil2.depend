@@ -1360,7 +1360,7 @@
 1664723025 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.cpp
 	"Galo.h"
 
-1664907539 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.h
+1664921053 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.h
 
 1664840766 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -1771,7 +1771,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1664920172 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
+1664920392 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	<SFML/Network.hpp>

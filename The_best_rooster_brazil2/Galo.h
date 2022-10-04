@@ -134,6 +134,9 @@ public:
         elementDrawOrder.push_back(BIGODE_FRENTE);
         elementDrawOrder.push_back(ASA_FRENTE);
 
+        elementos[BIGODE_FRENTE]->angle = 345;
+        elementos[BIGODE_ATRAS]->angle = 25;
+
     }
 
     RectangleShape getSprite() {
@@ -205,8 +208,7 @@ public:
         elementos.at(CORPO)->update(r.getPosition().x, r.getPosition().y, 0);
 
         elementos.at(RABO)->angle = sin(frames/200.f)*20;
-        elementos[BIGODE_FRENTE]->angle = 345;
-        elementos[BIGODE_ATRAS]->angle = 25;
+
 
 
         /******************************************************************/
@@ -226,8 +228,12 @@ public:
 
             elementos.at(PERNA_FRENTE)->offset.y += vspeed/8;
             elementos.at(PE_FRENTE)->angle += vspeed/20;
-            elementos.at(PERNA_ATRAS)->offset.y += vspeed/16     ;
+
+            elementos.at(PERNA_ATRAS)->offset.y += vspeed/16;
             elementos.at(PE_ATRAS)->angle += vspeed/20;
+
+            elementos.at(BIGODE_FRENTE)->angle -= vspeed/2;
+            elementos.at(BIGODE_ATRAS)->angle -= vspeed/2;
         } else {
             elementos.at(PERNA_FRENTE)->offset.y = 0;
             elementos.at(PERNA_ATRAS)->offset.y = 0;
