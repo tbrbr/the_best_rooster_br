@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1664657428 source:d:\tbrb\the_best_rooster_brazil2\main.cpp
+1664906041 source:d:\tbrb\the_best_rooster_brazil2\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
+	<vector>
+	<cmath>
+	"Elementos.h"
 	"Galo.h"
 
 1525812018 d:\tbrb\sfml-2.5.1\include\sfml\graphics.hpp
@@ -488,8 +491,7 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1664657446 d:\tbrb\the_best_rooster_brazil2\galo.h
-	<SFML/Graphics.hpp>
+1664904660 d:\tbrb\the_best_rooster_brazil2\galo.h
 
 1664723025 source:c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\galo.cpp
 	"Galo.h"
@@ -1778,4 +1780,6 @@
 	"Galo.h"
 
 1664900419 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\elementos.h
+
+1664904660 d:\tbrb\the_best_rooster_brazil2\elementos.h
 
