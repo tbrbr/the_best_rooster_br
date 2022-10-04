@@ -2,10 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-
-
-
-
 #include "Galo.h"
 
 #define FRAMERATE_LIMIT 60
@@ -63,16 +59,12 @@ int main(){
                     galo.animRun();
                 }
                 if (e.key.code == Keyboard::D) {
-
                 }
             }
-
             if(e.type == Event::MouseMoved){
-
                 mouseX = e.mouseMove.x;
                 mouseY = e.mouseMove.y;
             }
-
         }
 
 
