@@ -494,7 +494,7 @@
 1664723025 source:c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\galo.cpp
 	"Galo.h"
 
-1664890168 c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\galo.h
+1664890224 c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\galo.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -908,7 +908,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1664889480 source:c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
+1664890833 source:c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	<vector>

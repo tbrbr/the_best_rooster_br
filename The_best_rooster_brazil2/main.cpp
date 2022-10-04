@@ -24,6 +24,8 @@ int main(){
 
     Rooster::Galo galo(hb, 20, 20, 20, Rooster::state::STOPPED, t);
 
+    Rooster::Galo galo2(hb, 20, 20, 20, Rooster::state::STOPPED, t);
+
     int mouseX = 0;
     int mouseY = 0;
 
@@ -81,6 +83,19 @@ int main(){
             galo.setHspeed(0);
         }
 
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            galo2.setState(Rooster::state::RUNNING);
+            galo2.facingRight = true;
+            galo2.animRun();
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            galo2.setState(Rooster::state::RUNNING);
+            galo2.facingRight = false;
+            galo2.animRun();
+        } else {
+            galo2.setState(Rooster::state::STOPPED);
+            galo2.setHspeed(0);
+        }
+
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
             galo.attacking = true;
         } else {
@@ -89,6 +104,7 @@ int main(){
 
 
         galo.update(mouseX, mouseY);
+        galo2.update(mouseX, mouseY);
 
 
         window->clear();
@@ -98,6 +114,7 @@ int main(){
 
         window->draw(fundo);
         galo.show(*window);
+        galo2.show(*window);
         window->display();
 
     }
