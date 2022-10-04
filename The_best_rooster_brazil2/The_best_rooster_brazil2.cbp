@@ -45,9 +45,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Galo.cpp" />
+		<Unit filename="Elementos.h" />
 		<Unit filename="Galo.h" />
-		<Unit filename="Galo.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

@@ -11,7 +11,9 @@ enum bodyParts {
     PERNA_FRENTE,
     PE_FRENTE,
     PERNA_ATRAS,
-    PE_ATRAS
+    PE_ATRAS,
+    BIGODE_FRENTE,
+    BIGODE_ATRAS
 };
 
 class Element {

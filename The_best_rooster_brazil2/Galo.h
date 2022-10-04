@@ -25,7 +25,8 @@ enum roosters {
     SNIPER,
     KALSA,
     PESTE_NEGRA,
-    BRUXO
+    BRUXO,
+
 };
 
 
@@ -116,15 +117,21 @@ public:
 
         addElement(_texture, 7, 1229, 260, 186, 173, 1242, 130, 1134, 7); // p� tr�s
 
+        addElement(_texture, 786, 73, 102, 284,807,156,185,365,CABECA);// bigode frente
+
+        addElement(_texture, 786, 73, 102, 284,807,156,122,360,CABECA); // bigode atras
 
         elementDrawOrder.push_back(RABO);
         elementDrawOrder.push_back(ASA_ATRAS);
         elementDrawOrder.push_back(PE_ATRAS);
         elementDrawOrder.push_back(PERNA_ATRAS);
+        elementDrawOrder.push_back(BIGODE_ATRAS);
+        elementDrawOrder.push_back(ASA_FRENTE);
         elementDrawOrder.push_back(PE_FRENTE);
         elementDrawOrder.push_back(PERNA_FRENTE);
         elementDrawOrder.push_back(CORPO);
         elementDrawOrder.push_back(CABECA);
+        elementDrawOrder.push_back(BIGODE_FRENTE);
         elementDrawOrder.push_back(ASA_FRENTE);
 
     }
@@ -198,6 +205,9 @@ public:
         elementos.at(CORPO)->update(r.getPosition().x, r.getPosition().y, 0);
 
         elementos.at(RABO)->angle = sin(frames/200.f)*20;
+        elementos[BIGODE_FRENTE]->angle = 345;
+        elementos[BIGODE_ATRAS]->angle = 25;
+
 
         /******************************************************************/
 

@@ -32,11 +32,11 @@ void receive(char data[]){
     UdpSocket socket;
     sf::IpAddress sender;
     unsigned short port;
-    if (socket.receive(data, 100, received, sender, port) != sf::Socket::Done)
-    {
+    //    if (socket.receive(data, 100, received, sender, port) != sf::Socket::Done)
+    //{
         // error...
-    }
-    std::cout << "Received " << received << " bytes from " << sender << " on port " << port << std::endl;
+    //}
+    //std::cout << "Received " << received << " bytes from " << sender << " on port " << port << std::endl;
 }
 
 
