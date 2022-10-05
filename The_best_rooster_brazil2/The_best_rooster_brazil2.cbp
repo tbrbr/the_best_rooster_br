@@ -47,6 +47,9 @@
 		</Compiler>
 		<Unit filename="Elementos.h" />
 		<Unit filename="Galo.h" />
+		<Unit filename="GaloSniper.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="seraqueserver.h" />
 		<Extensions />

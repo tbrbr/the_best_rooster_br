@@ -1361,7 +1361,7 @@
 1664723025 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.cpp
 	"Galo.h"
 
-1664921053 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.h
+1664994782 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galo.h
 
 1664840766 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -1772,7 +1772,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1664920392 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
+1664994846 source:c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	<SFML/Network.hpp>
@@ -1781,6 +1781,7 @@
 	"seraqueserver.h"
 	"Elementos.h"
 	"Galo.h"
+	"GaloSniper.h"
 
 1664905942 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\elementos.h
 
@@ -1945,4 +1946,6 @@
 	<iostream>
 
 1664932087 c:\users\micro\documents\github\the_best_rooster_br\the_best_rooster_brazil2\elementos.h
+
+1664995007 c:\users\walter\desktop\programming\tbrbqpresta\the_best_rooster_br\the_best_rooster_brazil2\galosniper.h
 

@@ -13,6 +13,7 @@ using namespace sf;
 #include "seraqueserver.h"
 #include "Elementos.h"
 #include "Galo.h"
+#include "GaloSniper.h"
 
 using namespace Rooster;
 using namespace std;
@@ -45,8 +46,9 @@ int main()
     Texture t;
     t.loadFromFile("sprites/galoSniper.png");
 
-    Rooster::Galo galo(hb, 20, 20, 20, Rooster::state::STOPPED, t);
-    Rooster::Galo galo2(hb, 20, 20, 20, Rooster::state::STOPPED, t);
+
+    Rooster::Sniper galo = Sniper(hb, 20, 20, 20, Rooster::state::STOPPED, t);
+    Rooster::Sniper galo2(hb, 20, 20, 20, Rooster::state::STOPPED, t);
 
     int mouseX = 0;
     int mouseY = 0;
@@ -136,14 +138,13 @@ int main()
             galo2.setHspeed(0);
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            galo.attacking = true;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::J)){
+            galo2.isLightAttack = true;
+            galo2.setInitFrames(galo2.getFrames());
         }
-        else
-        {
-            galo.attacking = false;
-        }
+
+
+
 
         galo.update(mouseX, mouseY);
         galo2.update(mouseX, mouseY);
