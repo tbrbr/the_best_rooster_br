@@ -117,9 +117,9 @@ public:
 
         addElement(_texture, 7, 1229, 260, 186, 173, 1242, 130, 1134, 7); // p� tr�s
 
-        addElement(_texture, 786, 73, 102, 284,807,156,185,365,CABECA);// bigode frente
+        addElement(_texture, 828, 66, 86,106,850, 80, 185, 364, CABECA);// bigode frente
 
-        addElement(_texture, 786, 73, 102, 284,807,156,122,360,CABECA); // bigode atras
+        addElement(_texture, 828, 66, 86,106,850, 80, 142, 369,CABECA); // bigode atras
 
         elementDrawOrder.push_back(RABO);
         elementDrawOrder.push_back(ASA_ATRAS);
@@ -237,6 +237,12 @@ public:
         } else {
             elementos.at(PERNA_FRENTE)->offset.y = 0;
             elementos.at(PERNA_ATRAS)->offset.y = 0;
+
+            elementos.at(PE_FRENTE)->angle = 0;
+            elementos.at(PE_ATRAS)->angle = 0;
+
+            elementos.at(BIGODE_FRENTE)->angle = 345;
+            elementos.at(BIGODE_ATRAS)->angle = 25;
         }
 
         elementos.at(ASA_FRENTE)->angle = ArmSpinAngFase;
