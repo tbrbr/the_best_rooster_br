@@ -18,23 +18,20 @@ using namespace sf;
 using namespace Rooster;
 using namespace std;
 
-#if 1
-int main()
-{
-    cout << IpAddress::getLocalAddress();
-    TcpListener listener;
-    listener.listen(59000);
-    TcpSocket client;
-    listener.accept(client);
-    char data[100];
+
+int main(){
+
+    UdpSocket socket;
+    socket.setBlocking(true);
+    socket.bind(69000);
+    IpAddress ip = "10.13.180.93";
+    unsigned short port = 69001;
+    char data[10];
+    char gettedData[10] = "s";
     size_t size;
-    client.receive(data,100,size);
-    cout << data;
 
-    return 0;
+    socket.receive(data,10,size,ip,port);
 
-}
-#else
 
     RenderWindow *window = new RenderWindow(VideoMode(1280, 720), "TBRB");
     window->setFramerateLimit(FRAMERATE_LIMIT);
@@ -50,8 +47,12 @@ int main()
     int mouseX = 0;
     int mouseY = 0;
 
+    socket.setBlocking(false);
+
     while (window->isOpen())
     {
+
+
         Event e;
         while (window->pollEvent(e))
         {
@@ -65,18 +66,21 @@ int main()
                 if (e.key.code == Keyboard::W)
                 {
                     galo.animJump();
+                    data[0] = 'w';
                 }
                 if (e.key.code == Keyboard::A)
                 {
                     galo.setState(Rooster::RUNNING);
                     galo.facingRight = false;
                     galo.animRun();
+                    data[0] = 'a';
                 }
                 if (e.key.code == Keyboard::D)
                 {
                     galo.setState(Rooster::state::RUNNING);
                     galo.facingRight = true;
                     galo.animRun();
+                    data[0] = 'd';
                 }
             }
 
@@ -104,32 +108,52 @@ int main()
             galo.setState(Rooster::state::RUNNING);
             galo.facingRight = true;
             galo.animRun();
+            data[0] = 'd';
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             galo.setState(Rooster::state::RUNNING);
             galo.facingRight = false;
             galo.animRun();
+            data[0] = 'a';
         }
         else
         {
             galo.setState(Rooster::state::STOPPED);
             galo.setHspeed(0);
+            data[0] = 's';
+
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        socket.send(data,10,ip,port);
+        if(socket.receive(gettedData,10,size,ip,port) != Socket::Done){
+
+        }
+
+        cout << "Data: " << data << "\r";
+        cout << "getdata: " << gettedData << "\n";
+
+
+
+        if (gettedData[0] == 'd')
         {
             galo2.setState(Rooster::state::RUNNING);
             galo2.facingRight = true;
             galo2.animRun();
+
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        else if (gettedData[0] == 'a')
         {
             galo2.setState(Rooster::state::RUNNING);
             galo2.facingRight = false;
             galo2.animRun();
         }
-        else
+
+         else if (gettedData[0] == 'w')
+        {
+            galo2.animJump();
+        }
+        else if(gettedData[0] == 's')
         {
             galo2.setState(Rooster::state::STOPPED);
             galo2.setHspeed(0);
@@ -159,4 +183,4 @@ int main()
 
     return 0;
 }
-#endif
+
