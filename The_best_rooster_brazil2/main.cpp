@@ -18,26 +18,23 @@ using namespace sf;
 using namespace Rooster;
 using namespace std;
 
+#if 1
 int main()
 {
-    /*
-    UdpSocket socket;
-
-    ConnectUDPSocket(socket, 2001);
-    sf::IpAddress ip = IpAddress::getLocalAddress();
-
-    unsigned short port = 2000;
+    cout << IpAddress::getLocalAddress();
+    TcpListener listener;
+    listener.listen(59000);
+    TcpSocket client;
+    listener.accept(client);
     char data[100];
-
-    cout << "Type your message";
-    string message;
-    getline(cin, message);
-    SendData(socket, message, ip, port);
-    receiveData(socket, data);
+    size_t size;
+    client.receive(data,100,size);
     cout << data;
 
     return 0;
-    */
+
+}
+#else
 
     RenderWindow *window = new RenderWindow(VideoMode(1280, 720), "TBRB");
     window->setFramerateLimit(FRAMERATE_LIMIT);
@@ -162,3 +159,4 @@ int main()
 
     return 0;
 }
+#endif

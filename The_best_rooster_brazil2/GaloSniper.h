@@ -100,7 +100,6 @@ public:
         /******************************************************************/
 
 
-
         //jump animation
         if(air) {
             ArmSpinAngFase = (vspeed/8) * 45;
@@ -160,10 +159,6 @@ public:
 
 
         }
-
-
-
-
 
 
         for(int i = 1; i < elementos.size(); i++) {

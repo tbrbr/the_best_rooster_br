@@ -171,8 +171,6 @@ public:
     virtual void LightAttack() = 0;
 
 
-
-
 };
 
 }
